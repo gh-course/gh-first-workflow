@@ -17,6 +17,9 @@ jobs:
                   echo $GITHUB_SHA
     display-dir-info-windows:
         runs-on: windows-latest
+        defaults:
+            run:
+                shell: pwsh
         steps:
             - uses: actions/checkout@v2
             - name: Display Directories Info
