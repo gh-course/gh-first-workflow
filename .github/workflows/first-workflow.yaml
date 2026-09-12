@@ -16,4 +16,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Run a one-line script
-        run: echo Hello, world! 
+        run: echo Hello, world!
+  dependency-job:
+    needs: build
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run a one-line script
+        run: whrite-host "Hello, world!"
+      - name: run error commande
+        run: doesnotexist
