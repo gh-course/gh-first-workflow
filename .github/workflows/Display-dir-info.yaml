@@ -1,0 +1,28 @@
+name: Display Directories Info
+on: [push]
+jobs:
+    display-dir-info:
+        runs-on: ubuntu-latest
+        defaults:
+            run:
+                shell: bash
+        steps:
+            - uses: actions/checkout@v2
+            - name: Display Directories Info
+              run: |
+                  pwd
+                  ls -la
+                  echo $GITHUB_WORKSPACE
+                  echo $GITHUB_REPOSITORY
+                  echo $GITHUB_SHA
+    display-dir-info-windows:
+        runs-on: windows-latest
+        steps:
+            - uses: actions/checkout@v2
+            - name: Display Directories Info
+              run: |
+                  pwd
+                  ls -la
+                  echo $GITHUB_WORKSPACE
+                  echo $GITHUB_REPOSITORY
+                  echo $GITHUB_SHA
