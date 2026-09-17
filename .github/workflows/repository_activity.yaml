@@ -1,0 +1,16 @@
+name: Repository_checkout
+on:
+    push:
+    pull_request:
+        types: [opened, synchronize, reopened, assigned]
+    issues:
+        types: [opened, edited, closed]
+jobs:
+    checkout:
+        runs-on: ubuntu-latest
+        steps:
+            - run: |
+                  echo $GITHUB_WORKSPACE
+                  echo $GITHUB_SHA
+            - name: Checkout Repository
+              uses: actions/checkout@v2
