@@ -9,6 +9,7 @@ on:
             environment:
                 description: "Enter your environment"
                 required: true
+                type: environment
             option:
                 description: "Choose an option"
                 required: true
