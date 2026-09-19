@@ -1,0 +1,35 @@
+name: Manually Trigger Workflow
+on:
+    workflow_dispatch:
+        inputs:
+            string:
+                description: "from the user"
+                required: true
+                default: "default string"
+            environment:
+                description: "Enter your environment"
+                required: true
+            option:
+                description: "Choose an option"
+                required: true
+                default: "option1"
+                type: choice
+                options:
+                    - option1
+                    - option2
+                    - option3
+            boolean:
+                description: "Enable or disable the feature"
+                required: true
+                default: false
+                type: boolean
+jobs:
+    manually-trigger:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Display Inputs
+              run: |
+                  echo "String input: ${{ github.event.inputs.string }}"
+                  echo "Environment input: ${{ github.event.inputs.environment }}"
+                  echo "Option input: ${{ github.event.inputs.option }}"
+                  echo "Boolean input: ${{ github.event.inputs.boolean }}"
