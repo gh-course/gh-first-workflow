@@ -13,4 +13,4 @@ jobs:
                   echo $GITHUB_WORKSPACE
                   echo $GITHUB_SHA
             - name: Checkout Repository
-              uses: actions/checkout@v2
+              uses: actions/checkout@v3
