@@ -1,0 +1,12 @@
+name: Workflow run
+on:
+    workflow_run:
+        workflows: ["Repository_checkout"]
+        types:
+            - completed
+jobs:
+    workflow-run:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Workflow run
+              run: echo "Workflow run completed successfully!"
