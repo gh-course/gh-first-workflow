@@ -1,0 +1,10 @@
+name: External trigger workflow
+on:
+    repository_dispatch:
+        types: [build]
+jobs:
+    external-trigger:
+        runs-on: ubuntu-latest
+        steps:
+            - name: External trigger workflow
+              run: echo "External trigger workflow executed successfully!"
