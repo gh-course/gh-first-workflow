@@ -1,0 +1,20 @@
+name: Expressions and Contexts
+on: [push, issues]
+run-name: "Expressions and Contexts by ${{ github.actor }} on ${{ github.repository }} - event: ${{ github.event_name }}"
+jobs:
+    expressions-and-contexts:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Expression
+              id: expression
+              run: |
+                  echo ${{ true }}
+                  echo ${{ 1> 2 }}
+                  echo ${{ 'string' == 'String' }}
+            - name: Dump Contexts
+              run: |
+                  echo "Github context: ${{ toJson(github) }}"
+                  echo "Workflow context: ${{ toJson(secrets) }}"
+                  echo "Job context: ${{ toJson(job) }}"
+                  echo "Runner context: ${{ toJson(runner) }}"
+                  echo "Steps context: ${{ toJson(steps) }}"
