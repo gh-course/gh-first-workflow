@@ -6,5 +6,7 @@ jobs:
     external-trigger:
         runs-on: ubuntu-latest
         steps:
-            - name: External trigger workflow
-              run: echo "External trigger workflow executed successfully!"
+            - name: afficher les parametres
+              run: |
+                  echo "Environment: ${{ github.event.client_payload.environment }}"
+                  echo "Version: ${{ github.event.client_payload.version }}"
