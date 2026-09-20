@@ -3,6 +3,7 @@ on: [push, issues]
 run-name: "Expressions and Contexts by ${{ github.actor }} on ${{ github.repository }} - event: ${{ github.event_name }}"
 jobs:
     expressions-and-contexts:
+        if: github.event_name == 'push'
         runs-on: ubuntu-latest
         steps:
             - name: Expression
