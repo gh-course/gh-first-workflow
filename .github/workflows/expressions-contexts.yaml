@@ -2,6 +2,13 @@ name: Expressions and Contexts
 on: [push, issues]
 run-name: "Expressions and Contexts by ${{ github.actor }} on ${{ github.repository }} - event: ${{ github.event_name }}"
 jobs:
+    run_for_issues_pr:
+        if: contains(fromJSON('["issues", "pull_request"]'), github.event_name)
+        runs-on: ubuntu-latest
+        steps:
+            - if: contains(github.event.issue.labels.*.name, 'bug')
+              name: Display Bug Labels
+              run: join(github.event.issue.labels.*.name, ', ')
     expressions-and-contexts:
         if: github.event_name == 'push'
         runs-on: ubuntu-latest
