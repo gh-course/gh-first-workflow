@@ -18,11 +18,20 @@ jobs:
               env:
                   STEP_LEVEL_VAR: "This is a step level variable"
                   WF_LEVEL_VAR: "This is a step level variable overriding workflow level variable"
+            - name: Set the value in bash
+              id: step_one
+              run: |
+                  {
+                      echo 'JSON_RESPONSE<<EOF'
+                      curl https://example.com
+                      echo EOF
+                  } >> "$GITHUB_ENV"
             - name: Step 2
               run: |
                   echo "Step 2 - Workflow Level Variable: $WF_LEVEL_VAR"
                   echo "Step 2 - Job Level Variable: $JOB_LEVEL_VAR"
                   echo "Step 2 - Step Level Variable: $STEP_LEVEL_VAR"
                   echo "New Environment Variable: $NEW_ENV_VAR"
+                  echo "Response Json: $JSON_RESPONSE"
               env:
                   STEP_LEVEL_VAR: "This is another step level variable"
