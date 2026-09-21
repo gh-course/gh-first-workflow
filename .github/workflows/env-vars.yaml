@@ -1,0 +1,25 @@
+name: environment variables
+on: [push]
+env:
+    WF_LEVEL_VAR: "This is a workflow level variable"
+jobs:
+    env-vars:
+        runs-on: ubuntu-latest
+        env:
+            JOB_LEVEL_VAR: "This is a job level variable"
+        steps:
+            - name: Step 1
+              run: |
+                  echo "Step 1 - Workflow Level Variable: $WF_LEVEL_VAR"
+                  echo "Step 1 - Job Level Variable: $JOB_LEVEL_VAR"
+                  echo "Step 1 - Step Level Variable: $STEP_LEVEL_VAR"
+              env:
+                  STEP_LEVEL_VAR: "This is a step level variable"
+                  WF_LEVEL_VAR: "This is a step level variable overriding workflow level variable"
+            - name: Step 2
+              run: |
+                  echo "Step 2 - Workflow Level Variable: $WF_LEVEL_VAR"
+                  echo "Step 2 - Job Level Variable: $JOB_LEVEL_VAR"
+                  echo "Step 2 - Step Level Variable: $STEP_LEVEL_VAR"
+              env:
+                  STEP_LEVEL_VAR: "This is another step level variable"
