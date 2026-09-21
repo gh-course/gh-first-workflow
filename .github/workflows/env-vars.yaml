@@ -14,7 +14,7 @@ jobs:
                   echo "Step 1 - Job Level Variable: $JOB_LEVEL_VAR"
                   echo "Step 1 - Step Level Variable: $STEP_LEVEL_VAR"
                   echo NEW_ENV_VAR=new value >> $GITHUB_ENV
-                  echo $JOB_LEVEL_VAR=$RANDOM >> $GITHUB_ENV
+                  echo JOB_LEVEL_VAR=$RANDOM >> $GITHUB_ENV
               env:
                   STEP_LEVEL_VAR: "This is a step level variable"
                   WF_LEVEL_VAR: "This is a step level variable overriding workflow level variable"
