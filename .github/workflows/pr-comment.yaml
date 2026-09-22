@@ -6,7 +6,7 @@ jobs:
     pr-comment:
         runs-on: ubuntu-latest
         permissions:
-            pull-requests: read
+            pull-requests: write
         steps:
             - name: Comment on pull request
               uses: actions/github-script@v6
