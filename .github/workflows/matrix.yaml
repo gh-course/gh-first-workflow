@@ -23,7 +23,7 @@ jobs:
         steps:
             - name: Node version before setup
               run: node --version
-            - run: echo ${{ toJSON(matrix) }}
+            - run: echo "${{ toJSON(matrix) }}"
             - name: Set up Node.js ${{ matrix.node }}
               uses: actions/setup-node@v3
               with:
