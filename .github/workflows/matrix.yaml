@@ -3,7 +3,7 @@ on: [push]
 jobs:
     matrix-job:
         runs-on: ${{ matrix.os }}
-        continue-on-error: true
+        continue-on-error: false
         strategy:
             matrix:
                 os: [ubuntu-latest, windows-latest]
@@ -11,16 +11,21 @@ jobs:
                 include:
                     - os: ubuntu-latest
                       is-ubuntu: true
-                    - environment: false
+                    - experimental: false
                     - os: macos-latest
                       node: 22
                     - os: ubuntu-latest
                       node: 20
+                    - os: ubuntu-latest
+                      node: 21
+                      experimental: true
                 exclude:
                     - os: ubuntu-latest
                       node: 21
-            fail-fast: false
+            fail-fast: true
         steps:
+            - if: matrix.experimental == true
+              run: exit 1
             - name: Node version before setup
               run: node --version
             - run: echo "${{ toJSON(matrix) }}"
