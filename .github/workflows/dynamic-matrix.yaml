@@ -1,4 +1,4 @@
-name: Matrix workflow
+name: Dynamic matrix workflow
 on:
   workflow_dispatch:
     inputs:
