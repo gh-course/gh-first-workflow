@@ -22,7 +22,7 @@ jobs:
         id: set-matrix
         uses: actions/github-script@v9
         with:
-          script: "return { os: context.payload.inputs.os.split(','), 'node-version': context.payload.inputs['node-version'].split(',') }"
+          script: "return { os: context.payload.inputs['os'].split(','), 'node-version': context.payload.inputs['node-version'].split(',') }"
           result-encoding: json
   matrix-job:
     needs: prepare-matrix
