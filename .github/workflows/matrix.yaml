@@ -1,5 +1,21 @@
-name: Matrix workflow
-on: [push]
+name: Dynamic Matrix
+on:
+    workflow_dispatch:
+        inputs:
+            os:
+                description: "Choose an operating system"
+                required: true
+                default: "ubuntu-latest,windows-latest"
+                type: string
+            node-version:
+                description: "Choose a Node.js version"
+                required: true
+                default: "20"
+                type: choice
+                options:
+                    - 20
+                    - 21
+                    - 22
 jobs:
     matrix-job:
         runs-on: ${{ matrix.os }}

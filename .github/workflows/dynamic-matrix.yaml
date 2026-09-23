@@ -1,0 +1,42 @@
+name: Matrix workflow
+on:
+  workflow_dispatch:
+    inputs:
+      os:
+        description: "Choose an operating system"
+        required: true
+        default: "ubuntu-latest,windows-latest"
+        type: string
+      node-version:
+        description: "Choose a Node.js version"
+        required: true
+        default: "20,21,22"
+        type: string
+jobs:
+  prepare-matrix:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+      - name: Set up matrix
+        id: set-matrix
+        uses: actions/github-script@v6
+        with:
+          script: "return { os: context.payload.inputs.os.split(','), 'node-version': context.payload.inputs['node-version'].split(',') }"
+          result-encoding: json
+  matrix-job:
+    needs: prepare-matrix
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: ${{fromJSON(needs.prepare-matrix.outputs.matrix).os}}
+        node-version: ${{fromJSON(needs.prepare-matrix.outputs.matrix).node-version}}
+    steps:
+      - name: Node version before setup
+        run: node --version
+      - name: Set up Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Node version after setup
+        run: node --version
