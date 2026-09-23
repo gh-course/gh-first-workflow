@@ -20,7 +20,7 @@ jobs:
     steps:
       - name: Set up matrix
         id: set-matrix
-        uses: actions/github-script@v6
+        uses: actions/github-script@v9
         with:
           script: "return { os: context.payload.inputs.os.split(','), 'node-version': context.payload.inputs['node-version'].split(',') }"
           result-encoding: json
