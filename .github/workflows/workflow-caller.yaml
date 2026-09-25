@@ -1,0 +1,17 @@
+name: Workflow caller
+on:
+    workflow_dispatch:
+        inputs:
+            name:
+                description: "Enter your environment"
+                required: true
+                type: string
+                default: "Mohamed"
+jobs:
+    call-workflow:
+        runs-on: ubuntu-latest
+        uses: gh-course/workflows/.github/workflows/reusable.yaml@main
+        with:
+            name: ${{ github.event.inputs.name }}
+        secrets:
+            access-token: ${{ secrets.ACCESS_TOKEN }}
