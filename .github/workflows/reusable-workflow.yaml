@@ -1,4 +1,4 @@
-name: reusable workflow in tha same repository
+name: reusable workflow in the same repository
 on:
     workflow_call:
         outputs:
