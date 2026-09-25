@@ -7,6 +7,12 @@ on:
                 value: ${{ jobs.output-date-job.outputs.date }}
 
 jobs:
+    call-another-reusable-workflow:
+        uses: gh-course/workflows/.github/workflows/reusable.yaml@main
+        with:
+            name: ${{ github.event.inputs.name }}
+        secrets:
+            access-token: ${{ secrets.ACCESS_TOKEN }}
     output-date-job:
         runs-on: ubuntu-latest
         outputs:
