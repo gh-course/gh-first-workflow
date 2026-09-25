@@ -1,0 +1,17 @@
+name: reusable workflow in tha same repository
+on:
+    workflow_call:
+        outputs:
+            date:
+                description: "Current date"
+                value: ${{ jobs.output-date-job.outputs.date }}
+
+jobs:
+    output-date-job:
+        runs-on: ubuntu-latest
+        outputs:
+            date: ${{ steps.get-date.outputs.date }}
+        steps:
+            - name: Get current date
+              id: get-date
+              run: echo "date=$(date)" >> $GITHUB_OUTPUT
