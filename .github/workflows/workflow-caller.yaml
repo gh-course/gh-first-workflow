@@ -9,7 +9,6 @@ on:
                 default: "Mohamed"
 jobs:
     call-workflow:
-        runs-on: ubuntu-latest
         uses: gh-course/workflows/.github/workflows/reusable.yaml@main
         with:
             name: ${{ github.event.inputs.name }}
