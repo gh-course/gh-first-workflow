@@ -1,0 +1,22 @@
+name: docker workflow
+on: [workflow_dispatch]
+jobs:
+    docker:
+        runs-on: ubuntu-latest
+        container:
+            image: node:22-alpine
+            ports:
+                - "80:80"
+            env:
+                NODE_ENV: production
+                API_URL: https://api.example.com
+        steps:
+            - name: Display Version Node and OS
+              run: |
+                  node -v
+                  cat /etc/os-release
+                  uname -a
+            - name: Display Environment Variables
+              run: |
+                  echo "NODE_ENV: $NODE_ENV"
+                  echo "API_URL: $API_URL"
