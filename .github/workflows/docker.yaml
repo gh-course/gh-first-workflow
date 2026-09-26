@@ -23,6 +23,7 @@ jobs:
             - name: Docker in step
               uses: docker://node:21-alpine
               with:
+                  entrypoint: /usr/local/bin/node
                   args: -p 2+3
             - name: Log version of Node.js in step
               uses: docker://node:20-alpine
