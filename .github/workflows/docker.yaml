@@ -27,6 +27,7 @@ jobs:
                   echo "This is a test file created inside the Docker container." > testfile.txt
                   ls -l
                   pwd
+                  whoami
             - name: Docker in step
               uses: docker://node:21-alpine
               with:
