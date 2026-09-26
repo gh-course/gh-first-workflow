@@ -45,4 +45,4 @@ jobs:
               uses: docker://node:20-alpine
               with:
                   entrypoint: sh
-                  args: -c "pwd && ls -la"
+                  args: -c "script.sh Hello World"
