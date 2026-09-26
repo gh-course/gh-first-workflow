@@ -44,5 +44,5 @@ jobs:
             - name: Run a bash scrip
               uses: docker://node:20-alpine
               with:
-                  entrypoint: /github/workspace/script.sh
-                  args: "Some text to pass to the script"
+                  entrypoint: sh
+                  args: -c "pwd && ls -la"
