@@ -11,6 +11,8 @@ jobs:
                 NODE_ENV: production
                 API_URL: https://api.example.com
         steps:
+            - name: Checkout code
+              uses: actions/checkout@v3
             - name: Display Version Node and OS
               run: |
                   node -v
@@ -38,3 +40,8 @@ jobs:
               with:
                   entrypoint: cat
                   args: testfile.txt
+            - name: Run a bash scrip
+              uses: docker://node:20-alpine
+              with:
+                  entrypoint: ./script.sh
+                  args: "Some text to pass to the script"
