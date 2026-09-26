@@ -43,5 +43,5 @@ jobs:
             - name: Run a bash scrip
               uses: docker://node:20-alpine
               with:
-                  entrypoint: script.sh
+                  entrypoint: ./script.sh
                   args: "Some text to pass to the script"
