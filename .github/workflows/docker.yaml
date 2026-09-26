@@ -44,4 +44,4 @@ jobs:
               uses: docker://node:20-alpine
               with:
                   entrypoint: sh
-                  args: -c "pwd && ls -la /github/workspace && cat /github/workspace/script.sh"
+                  args: -c "cd /github/workspace && ./script.sh 'Some text to pass to the script'"
