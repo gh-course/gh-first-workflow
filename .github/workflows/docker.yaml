@@ -28,6 +28,7 @@ jobs:
                   ls -l
                   pwd
                   whoami
+                  ./script.sh "Hello from the script!"
             - name: Docker in step
               uses: docker://node:21-alpine
               with:
