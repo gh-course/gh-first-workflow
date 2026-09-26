@@ -20,3 +20,11 @@ jobs:
               run: |
                   echo "NODE_ENV: $NODE_ENV"
                   echo "API_URL: $API_URL"
+            - name: Docker in step
+              uses: docker://node:21-alpine
+              with:
+                  args: -p 2+3
+            - name: Log version of Node.js in step
+              uses: docker://node:20-alpine
+              with:
+                  args: -v
