@@ -46,4 +46,4 @@ jobs:
               uses: docker://node:20-alpine
               with:
                   entrypoint: sh
-                  args: -c "script.sh Hello World"
+                  args: -c "/github/workspace/script.sh Hello World"
