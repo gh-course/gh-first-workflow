@@ -26,10 +26,6 @@ jobs:
             - name: Create a file
               run: |
                   echo "This is a test file created inside the Docker container." > testfile.txt
-                  ls -l
-                  pwd
-                  whoami
-                  ./script.sh "Hello from the script!"
             - name: Docker in step
               uses: docker://node:21-alpine
               with:
@@ -47,5 +43,5 @@ jobs:
             - name: Run a bash scrip
               uses: docker://node:20-alpine
               with:
-                  entrypoint: sh
-                  args: -c "/github/workspace/script.sh Hello World"
+                  entrypoint: ./script.sh
+                  args: "Hello World"
