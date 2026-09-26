@@ -13,6 +13,7 @@ jobs:
         steps:
             - name: Checkout code
               uses: actions/checkout@v3
+            - run: cat -A script.sh
             - name: Display Version Node and OS
               run: |
                   node -v
