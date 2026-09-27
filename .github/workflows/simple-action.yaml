@@ -5,6 +5,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
+            - run: ls -l
             - name: Simple docker action
               id: greet
               uses: ./github/actions/hello-docker
