@@ -8,7 +8,7 @@ jobs:
             - run: ls -l
             - name: Simple docker action
               id: greet
-              uses: ./github/actions/hello-docker
+              uses: ./.github/actions/hello-docker
               with:
                   who_to_greet: Mohamed
             - name: Log greeting time
