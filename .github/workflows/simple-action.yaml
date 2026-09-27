@@ -1,0 +1,16 @@
+name: Use a custom docker action
+on: [workflow_dispatch]
+jobs:
+    docker-action:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - name: Simple docker action
+              id: greet
+              uses: ./github/actions/hello-docker
+              with:
+                  who_to_greet: Mohamed
+            - name: Log greeting time
+              run: echo ${{ steps.greet.outputs.time }}
+            - name: Log env variable
+              run: echo $HELLO_TIME
