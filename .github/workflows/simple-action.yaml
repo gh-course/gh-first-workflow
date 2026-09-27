@@ -1,5 +1,5 @@
 name: Use a custom docker action
-on: [workflow_dispatch]
+on: [push]
 jobs:
     docker-action:
         runs-on: ubuntu-latest
